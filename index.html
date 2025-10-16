@@ -99,14 +99,195 @@
 
     <script>
         const problemBank = [
-             { difficulty: 'easy', title: 'Simple Calculator', description: 'Create code that stores two numbers, adds them together, and prints the result.', instructions: 'Arrange the blocks to add two numbers and display the sum.', blocks: ['num1 = 10', 'num2 = 25', 'result = num1 + num2', 'print(result)', 'result = num1 * num2'], solution: [{ "num1 = 10": [] }, { "num2 = 25": [] }, { "result = num1 + num2": [] }, { "print(result)": [] }] },
-             { difficulty: 'easy', title: 'Greeting Message', description: 'Store a name in a variable and print a greeting message.', instructions: 'Create code that greets someone by name.', blocks: ['name = "Alice"', 'print("Hello, " + name)', 'print(name)', 'age = 20', 'print("Goodbye")'], solution: [{ 'name = "Alice"': [] }, { 'print("Hello, " + name)': [] }] },
-             { difficulty: 'easy', title: 'Temperature Check', description: 'Check if the temperature is hot (above 80 degrees) and print an appropriate message.', instructions: 'Use an if statement to check temperature and print a message.', blocks: ['temp = 85', 'if temp > 80:', '    print("It\'s hot outside!")', 'if temp < 80:', '    print("It\'s cold outside!")'], solution: [{ "temp = 85": [] }, { "if temp > 80:": ["    print(\"It's hot outside!\")"] }] },
-             { difficulty: 'medium', title: 'Grade Classifier', description: 'Classify a test score as Pass (>=60) or Fail (<60) and print the result.', instructions: 'Use if-else to determine pass or fail based on score.', blocks: ['score = 75', 'if score >= 60:', '    print("Pass")', 'else:', '    print("Fail")', 'if score >= 70:', '    print("Good job")'], solution: [{ "score = 75": [] }, { "if score >= 60:": ["    print(\"Pass\")"] }, { "else:": ["    print(\"Fail\")"] }] },
-             { difficulty: 'medium', title: 'Shopping List Counter', description: 'Count how many items contain the letter "a" in a shopping list.', instructions: 'Loop through items and count those containing "a".', blocks: ['items = ["apple", "bread", "cheese", "banana"]', 'count = 0', 'for item in items:', '    if "a" in item:', '        count += 1', 'print(count)', 'count += 2'], solution: [{ 'items = ["apple", "bread", "cheese", "banana"]': [] }, { "count = 0": [] }, { "for item in items:": ["    if \"a\" in item:", "        count += 1"] }, { "print(count)": [] }] },
-             { difficulty: 'medium', title: 'Countdown Timer', description: 'Create a countdown from 5 to 1, then print "Blast off!"', instructions: 'Use a while loop to count down from 5.', blocks: ['count = 5', 'while count > 0:', '    print(count)', '    count -= 1', 'print("Blast off!")', 'while count < 10:'], solution: [{ "count = 5": [] }, { "while count > 0:": ["    print(count)", "    count -= 1"] }, { 'print("Blast off!")': [] }] },
-             { difficulty: 'hard', title: 'Password Validator', description: 'Check if a password is valid (>= 6 chars, has letters and numbers).', instructions: 'Use nested conditions to validate password strength.', blocks: ['password = "abc123"', 'if len(password) >= 6:', '    if any(c.isdigit() for c in password) and any(c.isalpha() for c in password):', '        print("Strong password")', '    else:', '        print("Weak password - must contain letters and numbers")', 'else:', '    print("Too short")', 'print("Password checked")'], solution: [{ 'password = "abc123"': [] }, { 'if len(password) >= 6:': ['    if any(c.isdigit() for c in password) and any(c.isalpha() for c in password):', '        print("Strong password")', '    else:', '        print("Weak password - must contain letters and numbers")'] }, { 'else:': ['    print("Too short")'] }] },
-             { difficulty: 'hard', title: 'Student Grade Average', description: 'Calculate the average of three test scores and determine letter grade (A>=90, B>=80, C>=70, F<70).', instructions: 'Calculate average and assign letter grade based on ranges.', blocks: ['test1 = 85', 'test2 = 92', 'test3 = 78', 'average = (test1 + test2 + test3) / 3', 'if average >= 90:', '    print("A")', 'elif average >= 80:', '    print("B")', 'elif average >= 70:', '    print("C")', 'else:', '    print("F")', 'print("Grade assigned")'], solution: [{ "test1 = 85": [] }, { "test2 = 92": [] }, { "test3 = 78": [] }, { "average = (test1 + test2 + test3) / 3": [] }, { "if average >= 90:": ["    print(\"A\")"] }, { "elif average >= 80:": ["    print(\"B\")"] }, { "elif average >= 70:": ["    print(\"C\")"] }, { "else:": ["    print(\"F\")"] }] }
+             { 
+                 difficulty: 'easy', 
+                 title: 'Product Filter', 
+                 description: 'Create a function that filters a dictionary of products by price. The function should return a list of product names that do not exceed a maximum price. For example, if products = {"laptop": 1200, "mouse": 25, "keyboard": 75} and max_price = 100, the function should return ["mouse", "keyboard"].', 
+                 instructions: 'Arrange the blocks to create a function that filters products by maximum price and returns qualifying product names.', 
+                 blocks: [
+                     'def filter_by_price(products, max_price):',
+                     '    affordable_items = []',
+                     '    for product, price in products.items():',
+                     '        if price <= max_price:',
+                     '            affordable_items.append(product)',
+                     '    return affordable_items',
+                     'for product in products:',
+                     '    if products[product] <= max_price:',
+                     'products = {"laptop": 1200, "mouse": 25, "keyboard": 75}',
+                     'print(filter_by_price(products, 100))'
+                 ], 
+                 solution: [
+                     { 'def filter_by_price(products, max_price):': ['    affordable_items = []'] },
+                     { '    for product, price in products.items():': ['        if price <= max_price:', '            affordable_items.append(product)'] },
+                     { '    return affordable_items': [] }
+                 ] 
+             },
+             { 
+                 difficulty: 'easy', 
+                 title: 'Calculate Total Cost', 
+                 description: 'Create a function that calculates the total cost of a purchase. The function takes a price and quantity, multiplies them together, and returns the total rounded to two decimal places. For example, if price = 10.50 and quantity = 2, the output should be 21.00.', 
+                 instructions: 'Arrange the blocks to create a function that calculates and rounds the total cost.', 
+                 blocks: [
+                     'def calculate_total(price, quantity):',
+                     '    total = price * quantity',
+                     '    return round(total, 2)',
+                     'price = 10.50',
+                     'quantity = 2',
+                     'result = calculate_total(price, quantity)',
+                     'print(f"Total cost: ${result}")',
+                     '    return total',
+                     '    total = price + quantity'
+                 ], 
+                 solution: [
+                     { 'def calculate_total(price, quantity):': ['    total = price * quantity', '    return round(total, 2)'] }
+                 ] 
+             },
+             { 
+                 difficulty: 'medium', 
+                 title: 'Student Grade Analyzer', 
+                 description: 'Create a function that analyzes a dictionary of student names and their test scores. The function should return a list of students who scored 70 or above. For example, if students = {"Alice": 85, "Bob": 62, "Charlie": 90}, the function should return ["Alice", "Charlie"].', 
+                 instructions: 'Arrange the blocks to create a function that filters passing students.', 
+                 blocks: [
+                     'def find_passing_students(students):',
+                     '    passing = []',
+                     '    for name, score in students.items():',
+                     '        if score >= 70:',
+                     '            passing.append(name)',
+                     '    return passing',
+                     '    for student in students:',
+                     '        if students[student] >= 70:',
+                     'students = {"Alice": 85, "Bob": 62, "Charlie": 90}',
+                     'print(find_passing_students(students))'
+                 ], 
+                 solution: [
+                     { 'def find_passing_students(students):': ['    passing = []'] },
+                     { '    for name, score in students.items():': ['        if score >= 70:', '            passing.append(name)'] },
+                     { '    return passing': [] }
+                 ] 
+             },
+             { 
+                 difficulty: 'medium', 
+                 title: 'Word Starts With Filter', 
+                 description: 'Create a function that filters words from a list based on their starting character. The function should check case-insensitively and return a new list. For example, if words = ["Zoology", "quiz", "juxtaposition", "zigzag", "jumble"] and char = "z", the function should return ["Zoology", "zigzag"].', 
+                 instructions: 'Arrange the blocks to create a function that filters words by starting character.', 
+                 blocks: [
+                     'def find_matching_words(word_list, char):',
+                     '    matching_words = []',
+                     '    for word in word_list:',
+                     '        if word[0].lower() == char.lower():',
+                     '            matching_words.append(word)',
+                     '    return matching_words',
+                     '        if word[0] == char:',
+                     '    if word[0].lower() == char.lower():',
+                     'words = ["Zoology", "quiz", "juxtaposition", "zigzag"]',
+                     'print(find_matching_words(words, "z"))'
+                 ], 
+                 solution: [
+                     { 'def find_matching_words(word_list, char):': ['    matching_words = []'] },
+                     { '    for word in word_list:': ['        if word[0].lower() == char.lower():', '            matching_words.append(word)'] },
+                     { '    return matching_words': [] }
+                 ] 
+             },
+             { 
+                 difficulty: 'medium', 
+                 title: 'Random Winner Selection', 
+                 description: 'Create a function that randomly selects a winner from a list of participants. The function should print "And the winner is ...", pause for 2 seconds, then print the winner\'s name. N.B. all the code should be placed inside the function; there is no main!', 
+                 instructions: 'Arrange the blocks to create a function that announces a random winner with dramatic pause.', 
+                 blocks: [
+                     'import random',
+                     'import time',
+                     'def announce_winner(entries):',
+                     '    print("And the winner is ...")',
+                     '    time.sleep(2)',
+                     '    winner = random.choice(entries)',
+                     '    print(winner)',
+                     '    pause = random.randint(1,3)',
+                     '    time.sleep(pause)',
+                     'participants = ["Simone", "Javi", "Miles"]',
+                     'announce_winner(participants)'
+                 ], 
+                 solution: [
+                     { 'import random': [] },
+                     { 'import time': [] },
+                     { 'def announce_winner(entries):': ['    print("And the winner is ...")', '    time.sleep(2)', '    winner = random.choice(entries)', '    print(winner)'] }
+                 ] 
+             },
+             { 
+                 difficulty: 'hard', 
+                 title: 'Book Inventory Manager', 
+                 description: 'Create a function that manages a library inventory. Given a dictionary of books with their quantities, return a list of books that are low in stock (5 or fewer copies). For example, if inventory = {"1984": 3, "Dune": 12, "Hamlet": 5}, the function should return ["1984", "Hamlet"].', 
+                 instructions: 'Arrange the blocks to create a function that identifies low-stock books.', 
+                 blocks: [
+                     'def check_low_stock(inventory, threshold=5):',
+                     '    low_stock = []',
+                     '    for book, quantity in inventory.items():',
+                     '        if quantity <= threshold:',
+                     '            low_stock.append(book)',
+                     '    return low_stock',
+                     '        if quantity < threshold:',
+                     'inventory = {"1984": 3, "Dune": 12, "Hamlet": 5}',
+                     'print(check_low_stock(inventory))'
+                 ], 
+                 solution: [
+                     { 'def check_low_stock(inventory, threshold=5):': ['    low_stock = []'] },
+                     { '    for book, quantity in inventory.items():': ['        if quantity <= threshold:', '            low_stock.append(book)'] },
+                     { '    return low_stock': [] }
+                 ] 
+             },
+             { 
+                 difficulty: 'hard', 
+                 title: 'Temperature Converter', 
+                 description: 'Create a function that converts temperatures from Fahrenheit to Celsius and categorizes them. If the temperature is below 0°C, return "Freezing", if between 0-20°C return "Cold", if between 20-30°C return "Moderate", and above 30°C return "Hot". For example, convert_temp(86) should return "Hot".', 
+                 instructions: 'Arrange the blocks to create a temperature converter with categorization.', 
+                 blocks: [
+                     'def convert_temp(fahrenheit):',
+                     '    celsius = (fahrenheit - 32) * 5 / 9',
+                     '    if celsius < 0:',
+                     '        return "Freezing"',
+                     '    elif celsius < 20:',
+                     '        return "Cold"',
+                     '    elif celsius < 30:',
+                     '        return "Moderate"',
+                     '    else:',
+                     '        return "Hot"',
+                     '    celsius = (fahrenheit - 32) / 1.8',
+                     '    if celsius <= 0:'
+                 ], 
+                 solution: [
+                     { 'def convert_temp(fahrenheit):': ['    celsius = (fahrenheit - 32) * 5 / 9'] },
+                     { '    if celsius < 0:': ['        return "Freezing"'] },
+                     { '    elif celsius < 20:': ['        return "Cold"'] },
+                     { '    elif celsius < 30:': ['        return "Moderate"'] },
+                     { '    else:': ['        return "Hot"'] }
+                 ] 
+             },
+             { 
+                 difficulty: 'hard', 
+                 title: 'Email Validator', 
+                 description: 'Create a function that validates email addresses. An email is valid if it contains exactly one "@" symbol and at least one "." after the "@". The function should return True for valid emails, False otherwise. For example, "user@example.com" returns True, but "user@example" returns False.', 
+                 instructions: 'Arrange the blocks to create an email validation function.', 
+                 blocks: [
+                     'def validate_email(email):',
+                     '    if email.count("@") != 1:',
+                     '        return False',
+                     '    at_position = email.find("@")',
+                     '    domain = email[at_position + 1:]',
+                     '    if "." in domain:',
+                     '        return True',
+                     '    else:',
+                     '        return False',
+                     '    if email.count("@") == 1:',
+                     '    if "." in email:'
+                 ], 
+                 solution: [
+                     { 'def validate_email(email):': [] },
+                     { '    if email.count("@") != 1:': ['        return False'] },
+                     { '    at_position = email.find("@")': [] },
+                     { '    domain = email[at_position + 1:]': [] },
+                     { '    if "." in domain:': ['        return True'] },
+                     { '    else:': ['        return False'] }
+                 ] 
+             }
         ];
 
         let currentProblem = null;
